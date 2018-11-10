@@ -1,5 +1,5 @@
 #include "transaction.h"
-#include "trans_log.h"
+#include "translog.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -15,19 +15,26 @@ Trans_log::Trans_log()
 
 void Trans_log::fill()
 {
-    vector<Transaction> entries;
-    bool more = true;
-    while(more)
-        {
-            Transaction t;
-            t.read();
-            entries.push_back(t);
-            cout<< "enter more?";
-            char response;
-            if(tolower(response) != 'y')
-                more = false;
-        }
-    m_entries = entries;
+#if 0
+    vector<Transaction> entries(30);
+    for(int i=0; i<entries.size(); i++)
+    {
+        entries.push_back(i+1, static_cast<double>(rand()*1.0), "description")
+    }
+
+#endif
+
+    while(!cin.fail())
+    {
+        Transaction t;
+        t.read();
+        m_entries.push_back(t);
+    }
+}
+
+vector<Transaction> Trans_log::get_entries() const
+{
+    return m_entries;
 }
 
 double Trans_log::balance(int day)
@@ -52,7 +59,8 @@ double Trans_log::sum()
 
 double Trans_log:: average()
 {
-    return sum()/m_entries.size();
+    m_avbal = sum()/m_entries.size();
+    return m_avbal;
 }
 
 double Trans_log::minimum()
@@ -63,6 +71,7 @@ double Trans_log::minimum()
         if(balance(i) < minimum)
             minimum = balance(i);
     }
+    m_minbal = minimum;
     return minimum;
 }
 
@@ -70,9 +79,11 @@ double Trans_log::interest(double balance)
 {
     double rate = 0.05;
     int period = 30;
-    double earned = 0.0;
-    
+    return static_cast<double>(balance * rate * period);
+}
 
-    return earned;
-    
+void Trans_log::print() const
+{
+    for(int i = 0; i < m_entries.size(); i++)
+        m_entries[i].print();
 }

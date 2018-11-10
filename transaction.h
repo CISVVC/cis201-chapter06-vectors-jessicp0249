@@ -12,8 +12,8 @@ class Transaction
 public:
    Transaction();
    void read();
-   int get_day();
-   double get_amount();
+   int get_day() const;
+   double get_amount() const;
    void print() const;
 
 private:
