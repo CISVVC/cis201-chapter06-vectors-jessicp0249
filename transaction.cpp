@@ -11,25 +11,6 @@ Transaction::Transaction()
     m_amount = 0.0;
 }
 
-// Read comma separated data into fields
-void Transaction::read()
-{
-    char sentinel;    // Sentinel is a comma
-
-    // Read in day, clear failed state
-    cin >> m_day;
-    cin.clear();
-    cin >> sentinel;
-
-    // Read in amount, clear failed state
-    cin >> m_amount;
-    cin.clear();
-    cin >> sentinel;
-
-    // Read in description
-    getline(cin, m_description);
-}
-
 int Transaction::get_day() const
 {
     return m_day;
