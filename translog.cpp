@@ -16,7 +16,7 @@ Trans_log::Trans_log()
 void Trans_log::fill()
 {
     vector<Transaction> entries();
-    const int MAX_AMOUNT = 5,000;
+    const int MAX_AMOUNT = 5000;
     for(int i=0; i<10; i++)
     {
         entries.push_back(i++, static_cast<double>(rand() % MAX_AMOUNT * 1.0), "description");
