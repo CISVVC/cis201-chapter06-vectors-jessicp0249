@@ -8,7 +8,17 @@ using namespace std;
 Transaction::Transaction()
 {
     m_day = 0;
-    m_amount = 0.0;
+    set_amount(0.0);
+}
+
+void Transaction::set_amount(double amount)
+{
+    m_amount = amount;
+}
+
+void set_description(string description)
+{
+    m_description = description;
 }
 
 int Transaction::get_day() const
