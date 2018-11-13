@@ -11,7 +11,8 @@ class Transaction
 {
 public:
    Transaction();
-   void read();
+   void set_amount(double amount);
+   void set_description(string description);
    int get_day() const;
    double get_amount() const;
    void print() const;
