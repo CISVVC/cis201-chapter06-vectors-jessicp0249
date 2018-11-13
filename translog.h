@@ -13,8 +13,7 @@ class Trans_log
         Trans_log();
         void fill();    // Fill vector "m_entries"
         vector<Transaction> get_entries() const;
-        double balance(int day);    // Find balance on a given day
-        double sum();   // Add together all amounts
+        double balance(int pos);    // Find balance at the given position
         double average();   // Calculate average balance in vector
         double minimum();   // Calculate smallest balance in vector
         double interest(double balance);    // Calculate interest from given balance
