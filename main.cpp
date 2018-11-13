@@ -20,7 +20,7 @@ int main()
     {
         if(log.get_entries[i].get_amount() > 0)
                 log.get_entries[i].print();
-        cout << "Balance: " << log.balance(i) << endl;
+        cout << "Balance: $" << log.balance(i) << endl;
     }
     
     // find and print withdrawals
@@ -29,12 +29,12 @@ int main()
     {
         if(log.get_entries[i].get_amount() < 0)
                 log.get_entries[i].print();
-        cout << "Balance: " << log.balance(i) << endl;
+        cout << "Balance: $" << log.balance(i) << endl;
     }
     
     // Print interest earned
-    cout << "Interest earned (minimum): " << log.get_minbal() << endl;
-    cout << "Interest earned (average): " << log.get_avbal() << endl;
+    cout << "Interest earned (minimum): $" << log.get_minbal() << endl;
+    cout << "Interest earned (average): $" << log.get_avbal() << endl;
 
 #endif
 
