@@ -16,20 +16,21 @@ Trans_log::Trans_log()
 void Trans_log::fill()
 {
 #if 0
-    vector<Transaction> entries(30);
-    for(int i=0; i<entries.size(); i++)
+    vector<Transaction> entries();
+    for(int i=0; i<10; i++)
     {
-        entries.push_back(i+1, static_cast<double>(rand()*1.0), "description")
+        entries.push_back(i++, static_cast<double>(rand()*1.0), "description");
+        if(entries[i].get_amount() > 0) entries[i].set_description("ATM deposit");
+        else if(entries[i].get_amount() < 0)
+        {
+            entries[i].set_description("Check");
+            if(abs(entries[i].get_amount() ) > entries.get_bal())
+                entries[i].set_amount(entries[i].get_amount() + entries.get_bal());
+        }
     }
 
 #endif
 
-    while(!cin.fail())
-    {
-        Transaction t;
-        t.read();
-        m_entries.push_back(t);
-    }
 }
 
 vector<Transaction> Trans_log::get_entries() const
