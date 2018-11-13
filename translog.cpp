@@ -15,7 +15,6 @@ Trans_log::Trans_log()
 
 void Trans_log::fill()
 {
-#if 0
     vector<Transaction> entries();
     const int MAX_AMOUNT = 5,000;
     for(int i=0; i<10; i++)
@@ -29,9 +28,6 @@ void Trans_log::fill()
                 entries[i].set_amount(entries[i].get_amount() + entries.get_bal());
         }
     }
-
-#endif
-
 }
 
 vector<Transaction> Trans_log::get_entries() const
