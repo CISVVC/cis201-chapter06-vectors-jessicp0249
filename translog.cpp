@@ -24,8 +24,8 @@ void Trans_log::fill()
         else if(entries[i].get_amount() < 0)
         {
             entries[i].set_description("Check");
-            if(abs(entries[i].get_amount() ) > entries.get_bal())
-                entries[i].set_amount(entries[i].get_amount() + entries.get_bal());
+            if( abs(entries[i].get_amount()) > balance(i) )
+                entries[i].set_amount(entries[i].get_amount() + balance(i));
         }
     }
     m_entries = entries;
@@ -36,29 +36,23 @@ vector<Transaction> Trans_log::get_entries() const
     return m_entries;
 }
 
-double Trans_log::balance(int day)
+double Trans_log::balance(int pos)
 {
-    assert( day < m_entries.size());
+    assert( pos < m_entries.size() && pos >= 0);
     double balance = m_entries[0].get_amount();
-
-    for(int i = 1; i <= day; i++)
+    if(pos != 0)
     {
-        balance += m_entries[i].get_amount();
+       for(int i = 1; i <= pos; i++)
+       {
+            balance += m_entries[i].get_amount();
+       }
     }
     return balance;
 }
 
-double Trans_log::sum()
-{
-    double sum = 0.0;
-    for(int i = 0; i < m_entries.size(); i++)
-        sum += m_entries[i].get_amount();
-    return sum;
-}
-
 double Trans_log:: average()
 {
-    m_avbal = sum()/m_entries.size();
+    m_avbal = balance(m_entries.size()-1)/m_entries.size();
     return m_avbal;
 }
 
@@ -71,7 +65,7 @@ double Trans_log::minimum()
             minimum = balance(i);
     }
     m_minbal = minimum;
-    return minimum;
+    return m_minbal;
 }
 
 double Trans_log::interest(double balance)
