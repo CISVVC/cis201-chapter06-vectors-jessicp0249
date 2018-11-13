@@ -28,6 +28,7 @@ void Trans_log::fill()
                 entries[i].set_amount(entries[i].get_amount() + entries.get_bal());
         }
     }
+    m_entries = entries;
 }
 
 vector<Transaction> Trans_log::get_entries() const
