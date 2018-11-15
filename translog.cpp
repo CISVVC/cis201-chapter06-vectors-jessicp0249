@@ -8,6 +8,7 @@ using namespace std;
 
 Trans_log::Trans_log()
 {
+
 }
 
 void Trans_log::add_entry(Transaction t)

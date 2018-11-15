@@ -1,7 +1,6 @@
 #ifndef TRANSLOG_H
 #define TRANSLOG_H
 
-#include <iostream>
 #include <string>
 #include <vector>
 
