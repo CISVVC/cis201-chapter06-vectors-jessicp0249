@@ -7,36 +7,17 @@
 
 using namespace std;
 
+void fill_log(Trans_log log)
+{
+   log.add_entry(Transaction(1, 1154.00, "Initial balance"));
+}
+
 int main()
 {
-#if 0
-    Trans_log log;  // Create log - contains empty  vector<Transaction>, min balance, average balance
-    log.fill();     // Fill vector with Transaction objects
-    
+    Trans_log log;
+    fill_log(log);
 
-    // find and print deposits
-    cout << "Deposits:" << endl;
-    for(int i=0; i < log.get_entries().size(); i++)
-    {
-        if(log.get_entries[i].get_amount() > 0)
-                log.get_entries[i].print();
-        cout << "Balance: $" << log.balance(i) << endl;
-    }
-    
-    // find and print withdrawals
-    cout << "Withdrawals:" << endl;
-    for(int i=0; i < log.get_entries().size(); i++)
-    {
-        if(log.get_entries[i].get_amount() < 0)
-                log.get_entries[i].print();
-        cout << "Balance: $" << log.balance(i) << endl;
-    }
-    
-    // Print interest earned
-    cout << "Interest earned (minimum): $" << log.get_minbal() << endl;
-    cout << "Interest earned (average): $" << log.get_avbal() << endl;
+    log.print_daily_report();
 
-#endif
-
-    return 0;
+   return 0;
 }
