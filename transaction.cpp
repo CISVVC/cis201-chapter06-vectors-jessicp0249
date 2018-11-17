@@ -1,3 +1,10 @@
+/* File: Transaction.cpp
+Description: Implementation for member functions of the Transaction class.
+Author: Jessica Priester
+Email: jessicp0249@student.vvc.edu
+Date created: 11/16/2018 (completed)
+*/
+
 #include "transaction.h"
 #include <iostream>
 #include <string>
